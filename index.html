@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstruturaAI - Monitoramento Estrutural Inteligente</title>
+    <meta name="description" content="Monitoramento estrutural com Inteligência Artificial. Preveja falhas, reduza custos e garanta a segurança de pontes, barragens e edifícios.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                            950: '#042f2e'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(4, 47, 46, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-bg {
+            background: 
+                linear-gradient(to bottom, rgba(4, 47, 46, 0.8), rgba(19, 78, 74, 0.95)),
+                url('https://images.unsplash.com/photo-1541888087625-fce145f8e58f?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header class="fixed w-full top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-white shadow-lg">
+                        <i class="fa-solid fa-microchip text-xl"></i>
+                    </div>
+                    <span class="font-heading font-bold text-2xl text-white tracking-tight">Estrutura<span class="text-brand-400">AI</span></span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#solucoes" class="text-gray-300 hover:text-white transition-colors font-medium">Soluções</a>
+                    <a href="#tecnologia" class="text-gray-300 hover:text-white transition-colors font-medium">Tecnologia</a>
+                    <a href="#contato" class="text-gray-300 hover:text-white transition-colors font-medium">Contato</a>
+                </nav>
+
+                <div class="hidden md:flex">
+                    <a href="#demo" class="bg-brand-500 hover:bg-brand-400 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 transform hover:scale-105">
+                        Agendar Demo
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 hero-bg overflow-hidden">
+        <!-- Abstract glowing orbs -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-pulse-slow" style="animation-delay: 2s;"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center z-10">
+            <!-- Text Content -->
+            <div class="md:w-1/2 text-center md:text-left pt-12 md:pt-0 animate-fade-in-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/50 border border-brand-500/30 text-brand-100 text-sm font-semibold mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    Nova Geração de Sensores IoT
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold text-white leading-tight mb-6 tracking-tight">
+                    Preveja Falhas.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-blue-400">
+                        Garanta Segurança.
+                    </span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-xl font-light leading-relaxed mx-auto md:mx-0">
+                    Utilizamos Inteligência Artificial para analisar dados estruturais em tempo real. Identifique anomalias em pontes, barragens e edifícios antes que elas se tornem críticas.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <button class="bg-brand-500 hover:bg-brand-400 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 flex items-center justify-center gap-2">
+                        Conhecer Plataforma <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full font-semibold text-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-circle-play"></i> Ver Vídeo
+                    </button>
+                </div>
+                
+                <div class="mt-12 flex items-center justify-center md:justify-start gap-4 text-gray-400 text-sm">
+                    <span>Apoiado por:</span>
+                    <div class="flex gap-4 opacity-50 grayscale">
+                        <i class="fa-brands fa-aws text-2xl"></i>
+                        <i class="fa-brands fa-google text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Graphic -->
+            <div class="md:w-1/2 mt-16 md:mt-0 relative hidden md:block animate-fade-in-up" style="animation-delay: 0.3s;">
+                <div class="relative w-full max-w-lg mx-auto">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-500 to-blue-500 rounded-3xl transform rotate-3 scale-105 opacity-30 blur-xl"></div>
+                    <div class="relative bg-brand-950/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+                        <!-- Dashboard Mockup -->
+                        <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                            <h3 class="text-white font-heading font-semibold">Saúde Estrutural (Ponte JK)</h3>
+                            <span class="text-green-400 bg-green-400/10 px-2 py-1 rounded text-xs">Estável</span>
+                        </div>
+                        <div class="space-y-4">
+                            <!-- Metric 1 -->
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-400">Tensão dos Cabos</span>
+                                    <span class="text-white">87%</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-2">
+                                    <div class="bg-brand-500 h-2 rounded-full" style="width: 87%"></div>
+                                </div>
+                            </div>
+                            <!-- Metric 2 -->
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-400">Vibração (Hz)</span>
+                                    <span class="text-yellow-400">Atenção (3.2)</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-2">
+                                    <div class="bg-yellow-400 h-2 rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 pt-4 border-t border-white/10">
+                                <div class="bg-brand-900/50 p-4 rounded-xl border border-brand-500/20 flex gap-4 items-start">
+                                    <div class="text-brand-400 mt-1"><i class="fa-solid fa-robot"></i></div>
+                                    <div>
+                                        <h4 class="text-white text-sm font-semibold">Análise da IA</h4>
+                                        <p class="text-gray-400 text-xs mt-1">Padrão anômalo detectado no pilar central. Sugerimos inspeção preventiva nos próximos 15 dias.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark Footer -->
+    <footer class="bg-brand-950 text-gray-300 py-12 border-t border-brand-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded bg-brand-500 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <span class="font-heading font-bold text-xl text-white">Estrutura<span class="text-brand-400">AI</span></span>
+                    </div>
+                    <p class="text-sm text-gray-400 max-w-sm mb-6">
+                        Construindo o futuro da engenharia civil com monitoramento contínuo, inteligência artificial e proteção proativa de infraestruturas críticas.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-500 transition-colors"><i class="fa-brands fa-linkedin-in text-white"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-500 transition-colors"><i class="fa-brands fa-twitter text-white"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-500 transition-colors"><i class="fa-brands fa-github text-white"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4 font-heading">Soluções</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Monitoramento de Pontes</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Segurança de Barragens</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Análise de Edifícios Altos</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Integração com BIM</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4 font-heading">Empresa</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Sobre Nós</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Carreiras</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Blog de Engenharia</a></li>
+                        <li><a href="#" class="hover:text-brand-400 transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 EstruturaAI. Todos os direitos reservados.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+                    <a href="#" class="hover:text-white transition-colors">Termos de Serviço</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll effect for navbar
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+                header.style.background = 'rgba(4, 47, 46, 0.95)';
+            } else {
+                header.classList.remove('shadow-lg');
+                header.style.background = 'rgba(4, 47, 46, 0.7)';
+            }
+        });
+    </script>
+</body>
+</html>
